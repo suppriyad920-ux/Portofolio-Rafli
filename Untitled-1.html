@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafliansyah</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        /* Latar Belakang Menggunakan Foto Pribadi */
+        body {
+            background-image: linear-gradient(rgba(5, 5, 8, 0.75), rgba(5, 5, 8, 0.85)), url('foto-pribadi.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+
+        /* Navigasi Kaca Gelap Terapung */
+        nav {
+            position: sticky;
+            top: 20px;
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto 2rem;
+            background: rgba(18, 18, 24, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 30px;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #00f2fe;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Komponen Utama Black Glassmorphism */
+        .glass-card {
+            background: rgba(15, 15, 22, 0.6);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        /* Profile Hero Section */
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .profile-card {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(0,242,254,0.5));
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-info h1 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-info .tagline {
+            font-weight: 600;
+            color: #00f2fe;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        /* Skills Progress */
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-item span {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #cbd5e0;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            height: 12px;
+            overflow: hidden;
+            margin-top: 5px;
+            padding: 2px;
+        }
+
+        .progress {
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            height: 100%;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        /* Form Styling */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            outline: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: #a0aec0;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.85) 0%, rgba(79, 172, 254, 0.65) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #0d0f17;
+            padding: 0.8rem;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.25);
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, rgba(0, 242, 254, 1) 0%, rgba(79, 172, 254, 0.85) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 242, 254, 0.45);
+        }
+
+        footer {
+            text-align: center;
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#profile">Profil</a>
+        <a href="#about">Tentang</a>
+        <a href="#skills">Keahlian</a>
+        <a href="#contact">Kontak</a>
+    </nav>
+
+    <div class="container">
+        
+        <section id="profile" class="glass-card profile-card">
+            <div class="avatar-container">
+                <img src="foto-pribadi.jpg" alt="Foto Profil" class="avatar-img">
+            </div>
+            <div class="profile-info">
+                <h1>Rafliansyah</h1>
+                <p class="tagline">Content Creator & Tech Enthusiast</p>
+                <p>Selamat datang di ruang digital saya. Di sini Anda bisa mengenal lebih lanjut tentang karya, keahlian, dan aktivitas saya sehari-hari.</p>
+            </div>
+        </section>
+
+        <section id="about" class="glass-card">
+            <h2 class="section-title">Tentang Saya</h2>
+            <p>Saya seorang profesional yang berfokus pada eksplorasi ide-ide kreatif dan pengembangan teknologi. Memiliki minat tinggi pada estetika desain modern, fotografi visual, serta pembuatan konten interaktif di media sosial.</p>
+        </section>
+
+        <section id="skills" class="glass-card">
+            <h2 class="section-title">Keahlian & Minat</h2>
+            <div class="skills-list">
+                <div class="skill-item">
+                    <span>Fotografi & Visual Editing</span>
+                    <div class="progress-bar"><div class="progress" style="width: 88%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>Pengembangan Web & Desain UI</span>
+                    <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>Pembuatan Konten Digital</span>
+                    <div class="progress-bar"><div class="progress" style="width: 82%;"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="glass-card">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Pesan Anda telah dikirim!');">
+                <div class="form-group">
+                    <input type="text" placeholder="Nama Anda" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Anda" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="4" placeholder="Tuliskan pesan..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Kirim Pesan</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Rafliansyah.</p>
+    </footer>
+
+</body>
+</html>
